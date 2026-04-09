@@ -1,7 +1,3 @@
-# array 3 dimensi
-# mencari mahasiswa yang terpintar berdasarkan rata-rata nilai
-# matkul apa yg rata-ratanya paling kecil
-
 data = [
     [
         [10121001, "Asep"],
@@ -17,28 +13,19 @@ data = [
     ]
 ]
 
-rata2 = []
+rata_mhs = [sum(mhs[1]) / len(mhs[1]) for mhs in data]
+max_avg = max(rata_mhs)
+idx_max = rata_mhs.index(max_avg)
 
-for i in range(len(data)):
-    nilai = data[i][1]
-    avg = sum(nilai) / len(nilai)
-    rata2.append(avg)
-
-nilai_maksimal = max(rata2)
-index_maksimal = rata2.index(nilai_maksimal)
-
-jumlah_mk = len(data[0][1])
 rata_mk = []
+nilai_saja = [mhs[1] for mhs in data]
 
-for j in range(jumlah_mk):
-    total = 0
-    for i in range(len(data)):
-        total += data[i][1][j]
-    avg = total / len(data)
-    rata_mk.append(avg)
+for nilai_per_mk in zip(*nilai_saja):
+    avg_mk = sum(nilai_per_mk) / len(nilai_per_mk)
+    rata_mk.append(avg_mk)
 
-nilai_minimal = min(rata_mk)
-index_minimal = rata_mk.index(nilai_minimal)
+min_avg_mk = min(rata_mk)
+idx_min_mk = rata_mk.index(min_avg_mk)
 
-print("Mahasiswa Terpintar :", data[index_maksimal][0][1], "(Nilai:", round(nilai_maksimal, 2), ")")
-print("Mata Kuliah Nilai Terkecil : MK", index_minimal + 1, "(Nilai:", round(nilai_minimal, 2), ")")
+print(f"Mahasiswa Terpintar: {data[idx_max][0][1]} (Rata-rata: {round(max_avg, 2)})")
+print(f"Mata Kuliah Nilai Terkecil: MK {idx_min_mk + 1} (Rata-rata: {round(min_avg_mk, 2)})")
