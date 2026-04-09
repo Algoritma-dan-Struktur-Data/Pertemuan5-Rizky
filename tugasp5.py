@@ -1,5 +1,3 @@
-# array 2 dimensi
-
 while True:
     print("\n")
     print("1. Penjumlahan")
@@ -7,48 +5,46 @@ while True:
     print("3. Perkalian")
     print("0. Exit")
 
-    pilihan = int(input("Pilih menu: "))
+    opsi = int(input("Pilih menu: "))
 
-    if pilihan == 0:
+    if opsi == 0:
         print("Program selesai.")
         break
 
-    baris = int(input("\nInput jumlah baris: "))
-    kolom = int(input("Input jumlah kolom: "))
+    r = int(input("\nInput jumlah baris: "))
+    c = int(input("Input jumlah kolom: "))
 
-    print("\nInput Matriks A")
-    A = []
-    for i in range(baris):
-        row = []
-        for j in range(kolom):
-            nilai = int(input(f"A[{i}][{j}] = "))
-            row.append(nilai)
-        A.append(row)
+    print("\nInput Matriks Pertama")
+    mat_1 = []
+    for i in range(r):
+        baris_data = []
+        for j in range(c):
+            angka = int(input(f"Matriks1[{i}][{j}] = "))
+            baris_data.append(angka)
+        mat_1.append(baris_data)
 
-    print("\nInput Matriks B")
-    B = []
-    for i in range(baris):
-        row = []
-        for j in range(kolom):
-            nilai = int(input(f"B[{i}][{j}] = "))
-            row.append(nilai)
-        B.append(row)
+    print("\nInput Matriks Kedua")
+    mat_2 = []
+    for i in range(r):
+        baris_data = []
+        for j in range(c):
+            angka = int(input(f"Matriks2[{i}][{j}] = "))
+            baris_data.append(angka)
+        mat_2.append(baris_data)
 
-    hasil = []
+    output = []
 
-    # proses sesuai pilihan
-    for i in range(baris):
-        row = []
-        for j in range(kolom):
-            if pilihan == 1:
-                row.append(A[i][j] + B[i][j])
-            elif pilihan == 2:
-                row.append(A[i][j] - B[i][j])
-            elif pilihan == 3:
-                row.append(A[i][j] * B[i][j])
-        hasil.append(row)
+    for i in range(r):
+        baris_hasil = []
+        for j in range(c):
+            if opsi == 1:
+                baris_hasil.append(mat_1[i][j] + mat_2[i][j])
+            elif opsi == 2:
+                baris_hasil.append(mat_1[i][j] - mat_2[i][j])
+            elif opsi == 3:
+                baris_hasil.append(mat_1[i][j] * mat_2[i][j])
+        output.append(baris_hasil)
 
-    # output hasils
-    print("\nHasil:")
-    for row in hasil:
-        print(row)
+    print("\nHasil Akhir:")
+    for baris_hasil in output:
+        print(baris_hasil)
