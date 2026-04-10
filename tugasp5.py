@@ -1,50 +1,27 @@
 while True:
-    print("\n")
-    print("1. Penjumlahan")
-    print("2. Pengurangan")
-    print("3. Perkalian")
-    print("0. Exit")
+    print("\n1. Tambah\n2. Kurang\n3. Kali\n0. Keluar")
+    pilih = int(input("Pilih: "))
 
-    opsi = int(input("Pilih menu: "))
-
-    if opsi == 0:
-        print("Program selesai.")
+    if pilih == 0:
+        print("Program selesai.") 
         break
 
-    r = int(input("\nInput jumlah baris: "))
-    c = int(input("Input jumlah kolom: "))
+    r = int(input("Baris: "))
+    c = int(input("Kolom: "))
 
-    print("\nInput Matriks Pertama")
-    mat_1 = []
-    for i in range(r):
-        baris_data = []
-        for j in range(c):
-            angka = int(input(f"Matriks1[{i}][{j}] = "))
-            baris_data.append(angka)
-        mat_1.append(baris_data)
+    print("\nMatriks 1:")
+    m1 = [[int(input(f"M1[{i}][{j}]: ")) for j in range(c)] for i in range(r)]
 
-    print("\nInput Matriks Kedua")
-    mat_2 = []
-    for i in range(r):
-        baris_data = []
-        for j in range(c):
-            angka = int(input(f"Matriks2[{i}][{j}] = "))
-            baris_data.append(angka)
-        mat_2.append(baris_data)
+    print("\nMatriks 2:")
+    m2 = [[int(input(f"M2[{i}][{j}]: ")) for j in range(c)] for i in range(r)]
 
-    output = []
+    if pilih == 1:
+        hasil = [[m1[i][j] + m2[i][j] for j in range(c)] for i in range(r)]
+    elif pilih == 2:
+        hasil = [[m1[i][j] - m2[i][j] for j in range(c)] for i in range(r)]
+    elif pilih == 3:
+        hasil = [[m1[i][j] * m2[i][j] for j in range(c)] for i in range(r)]
 
-    for i in range(r):
-        baris_hasil = []
-        for j in range(c):
-            if opsi == 1:
-                baris_hasil.append(mat_1[i][j] + mat_2[i][j])
-            elif opsi == 2:
-                baris_hasil.append(mat_1[i][j] - mat_2[i][j])
-            elif opsi == 3:
-                baris_hasil.append(mat_1[i][j] * mat_2[i][j])
-        output.append(baris_hasil)
-
-    print("\nHasil Akhir:")
-    for baris_hasil in output:
-        print(baris_hasil)
+    print("\nHasil:")
+    for baris in hasil:
+        print(baris)
